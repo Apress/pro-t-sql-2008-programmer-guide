@@ -1,0 +1,1 @@
+DataSvcUtil /in:"AdventureWorksModel.edmx" /out:"AdventureWorksModel.cs"

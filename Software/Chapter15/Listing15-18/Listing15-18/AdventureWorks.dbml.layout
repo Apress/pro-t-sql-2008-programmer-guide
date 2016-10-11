@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AdventureWorks">
+  <DataContextMoniker Name="/AdventureWorksDataContext" />
+  <nestedChildShapes>
+    <classShape Id="77d7a859-3bed-444e-a4ce-79c10c86d21f" absoluteBounds="3.375, 1.25, 2, 1.5891951497395831">
+      <DataClassMoniker Name="/AdventureWorksDataContext/EmailAddress" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d9548f4-4c49-4769-abbf-a7747e7183dd" absoluteBounds="3.3899999999999997, 1.71, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4a5565a-272d-44fd-9984-82ca8c226faf" absoluteBounds="0.75, 1.25, 2, 2.9039737955729166">
+      <DataClassMoniker Name="/AdventureWorksDataContext/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4d20f52c-2c73-4eef-81e5-fba0ec80bc6b" absoluteBounds="0.76500000000000012, 1.71, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.04459757486979); (3.375 : 2.04459757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksDataContext/Person/Person_EmailAddress" />
+      <nodes>
+        <classShapeMoniker Id="b4a5565a-272d-44fd-9984-82ca8c226faf" />
+        <classShapeMoniker Id="77d7a859-3bed-444e-a4ce-79c10c86d21f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

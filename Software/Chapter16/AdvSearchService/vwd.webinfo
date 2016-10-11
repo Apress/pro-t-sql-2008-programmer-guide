@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><VisualWebDeveloper>
+
+    <!-- 
+	Visual Studio global web project settings.
+    -->
+
+
+	<StartupServices>
+		<Service ID="{C8F2D6AC-F9F4-4E40-A399-22F9A9A5CBD2}"/></StartupServices></VisualWebDeveloper>

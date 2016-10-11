@@ -1,0 +1,7 @@
+USE AdventureWorks;
+GO
+
+ALTER DATABASE AdventureWorks
+SET RECURSIVE_TRIGGERS OFF;
+GO
+

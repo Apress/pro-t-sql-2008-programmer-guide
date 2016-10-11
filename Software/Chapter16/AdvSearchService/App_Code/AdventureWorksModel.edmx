@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdventureWorksModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="Production">
+          <EntitySet Name="Product" EntityType="AdventureWorksModel.Store.Product" store:Type="Tables" />
+          <EntitySet Name="ProductPhoto" EntityType="AdventureWorksModel.Store.ProductPhoto" store:Type="Tables" />
+          <EntitySet Name="ProductProductPhoto" EntityType="AdventureWorksModel.Store.ProductProductPhoto" store:Type="Tables" />
+          <AssociationSet Name="FK_ProductProductPhoto_Product_ProductID" Association="AdventureWorksModel.Store.FK_ProductProductPhoto_Product_ProductID">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductProductPhoto" EntitySet="ProductProductPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" Association="AdventureWorksModel.Store.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID">
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
+            <End Role="ProductProductPhoto" EntitySet="ProductProductPhoto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductNumber" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="MakeFlag" Type="bit" Nullable="false" />
+          <Property Name="FinishedGoodsFlag" Type="bit" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="15" />
+          <Property Name="SafetyStockLevel" Type="smallint" Nullable="false" />
+          <Property Name="ReorderPoint" Type="smallint" Nullable="false" />
+          <Property Name="StandardCost" Type="money" Nullable="false" />
+          <Property Name="ListPrice" Type="money" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="5" />
+          <Property Name="SizeUnitMeasureCode" Type="nchar" MaxLength="3" />
+          <Property Name="WeightUnitMeasureCode" Type="nchar" MaxLength="3" />
+          <Property Name="Weight" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="DaysToManufacture" Type="int" Nullable="false" />
+          <Property Name="ProductLine" Type="nchar" MaxLength="2" />
+          <Property Name="Class" Type="nchar" MaxLength="2" />
+          <Property Name="Style" Type="nchar" MaxLength="2" />
+          <Property Name="ProductSubcategoryID" Type="int" />
+          <Property Name="ProductModelID" Type="int" />
+          <Property Name="SellStartDate" Type="datetime" Nullable="false" />
+          <Property Name="SellEndDate" Type="datetime" />
+          <Property Name="DiscontinuedDate" Type="datetime" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductPhoto">
+          <Key>
+            <PropertyRef Name="ProductPhotoID" />
+          </Key>
+          <Property Name="ProductPhotoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ThumbNailPhoto" Type="varbinary(max)" />
+          <Property Name="ThumbnailPhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LargePhoto" Type="varbinary(max)" />
+          <Property Name="LargePhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductProductPhoto">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductPhotoID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductPhotoID" Type="int" Nullable="false" />
+          <Property Name="Primary" Type="bit" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ProductProductPhoto_Product_ProductID">
+          <End Role="Product" Type="AdventureWorksModel.Store.Product" Multiplicity="1" />
+          <End Role="ProductProductPhoto" Type="AdventureWorksModel.Store.ProductProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductProductPhoto">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID">
+          <End Role="ProductPhoto" Type="AdventureWorksModel.Store.ProductPhoto" Multiplicity="1" />
+          <End Role="ProductProductPhoto" Type="AdventureWorksModel.Store.ProductProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductPhoto">
+              <PropertyRef Name="ProductPhotoID" />
+            </Principal>
+            <Dependent Role="ProductProductPhoto">
+              <PropertyRef Name="ProductPhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdventureWorksModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="AdventureWorksEntities">
+          <EntitySet Name="Product" EntityType="AdventureWorksModel.Product" />
+          <EntitySet Name="ProductPhoto" EntityType="AdventureWorksModel.ProductPhoto" />
+          <EntitySet Name="ProductProductPhoto" EntityType="AdventureWorksModel.ProductProductPhoto" />
+          <AssociationSet Name="FK_ProductProductPhoto_Product_ProductID" Association="AdventureWorksModel.FK_ProductProductPhoto_Product_ProductID">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductProductPhoto" EntitySet="ProductProductPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" Association="AdventureWorksModel.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID">
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
+            <End Role="ProductProductPhoto" EntitySet="ProductProductPhoto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductNumber" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="MakeFlag" Type="Boolean" Nullable="false" />
+          <Property Name="FinishedGoodsFlag" Type="Boolean" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="SafetyStockLevel" Type="Int16" Nullable="false" />
+          <Property Name="ReorderPoint" Type="Int16" Nullable="false" />
+          <Property Name="StandardCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Size" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SizeUnitMeasureCode" Type="String" MaxLength="3" Unicode="true" FixedLength="true" />
+          <Property Name="WeightUnitMeasureCode" Type="String" MaxLength="3" Unicode="true" FixedLength="true" />
+          <Property Name="Weight" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="DaysToManufacture" Type="Int32" Nullable="false" />
+          <Property Name="ProductLine" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="Class" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="Style" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="ProductSubcategoryID" Type="Int32" />
+          <Property Name="ProductModelID" Type="Int32" />
+          <Property Name="SellStartDate" Type="DateTime" Nullable="false" />
+          <Property Name="SellEndDate" Type="DateTime" />
+          <Property Name="DiscontinuedDate" Type="DateTime" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ProductProductPhoto" Relationship="AdventureWorksModel.FK_ProductProductPhoto_Product_ProductID" FromRole="Product" ToRole="ProductProductPhoto" />
+        </EntityType>
+        <EntityType Name="ProductPhoto">
+          <Key>
+            <PropertyRef Name="ProductPhotoID" />
+          </Key>
+          <Property Name="ProductPhotoID" Type="Int32" Nullable="false" />
+          <Property Name="ThumbNailPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ThumbnailPhotoFileName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LargePhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LargePhotoFileName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ProductProductPhoto" Relationship="AdventureWorksModel.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" FromRole="ProductPhoto" ToRole="ProductProductPhoto" />
+        </EntityType>
+        <EntityType Name="ProductProductPhoto">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductPhotoID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductPhotoID" Type="Int32" Nullable="false" />
+          <Property Name="Primary" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="AdventureWorksModel.FK_ProductProductPhoto_Product_ProductID" FromRole="ProductProductPhoto" ToRole="Product" />
+          <NavigationProperty Name="ProductPhoto" Relationship="AdventureWorksModel.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" FromRole="ProductProductPhoto" ToRole="ProductPhoto" />
+        </EntityType>
+        <Association Name="FK_ProductProductPhoto_Product_ProductID">
+          <End Role="Product" Type="AdventureWorksModel.Product" Multiplicity="1" />
+          <End Role="ProductProductPhoto" Type="AdventureWorksModel.ProductProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductProductPhoto">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID">
+          <End Role="ProductPhoto" Type="AdventureWorksModel.ProductPhoto" Multiplicity="1" />
+          <End Role="ProductProductPhoto" Type="AdventureWorksModel.ProductProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductPhoto">
+              <PropertyRef Name="ProductPhotoID" />
+            </Principal>
+            <Dependent Role="ProductProductPhoto">
+              <PropertyRef Name="ProductPhotoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="Production" CdmEntityContainer="AdventureWorksEntities">
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="IsTypeOf(AdventureWorksModel.Product)">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="MakeFlag" ColumnName="MakeFlag" />
+                <ScalarProperty Name="FinishedGoodsFlag" ColumnName="FinishedGoodsFlag" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="SafetyStockLevel" ColumnName="SafetyStockLevel" />
+                <ScalarProperty Name="ReorderPoint" ColumnName="ReorderPoint" />
+                <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SizeUnitMeasureCode" ColumnName="SizeUnitMeasureCode" />
+                <ScalarProperty Name="WeightUnitMeasureCode" ColumnName="WeightUnitMeasureCode" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="DaysToManufacture" ColumnName="DaysToManufacture" />
+                <ScalarProperty Name="ProductLine" ColumnName="ProductLine" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="ProductSubcategoryID" ColumnName="ProductSubcategoryID" />
+                <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+                <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
+                <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
+                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPhoto">
+            <EntityTypeMapping TypeName="IsTypeOf(AdventureWorksModel.ProductPhoto)">
+              <MappingFragment StoreEntitySet="ProductPhoto">
+                <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+                <ScalarProperty Name="ThumbNailPhoto" ColumnName="ThumbNailPhoto" />
+                <ScalarProperty Name="ThumbnailPhotoFileName" ColumnName="ThumbnailPhotoFileName" />
+                <ScalarProperty Name="LargePhoto" ColumnName="LargePhoto" />
+                <ScalarProperty Name="LargePhotoFileName" ColumnName="LargePhotoFileName" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductProductPhoto">
+            <EntityTypeMapping TypeName="IsTypeOf(AdventureWorksModel.ProductProductPhoto)">
+              <MappingFragment StoreEntitySet="ProductProductPhoto">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+                <ScalarProperty Name="Primary" ColumnName="Primary" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ProductProductPhoto_Product_ProductID" TypeName="AdventureWorksModel.FK_ProductProductPhoto_Product_ProductID" StoreEntitySet="ProductProductPhoto">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            </EndProperty>
+            <EndProperty Name="ProductProductPhoto">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" TypeName="AdventureWorksModel.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" StoreEntitySet="ProductProductPhoto">
+            <EndProperty Name="ProductPhoto">
+              <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+            </EndProperty>
+            <EndProperty Name="ProductProductPhoto">
+              <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <edmx:Diagrams >
+<Diagram Name="AdventureWorksModel">
+<EntityTypeShape EntityType="AdventureWorksModel.Product" PointX="1.125" PointY="1" Width="1.5" Height="5.2079475911458317" IsExpanded="true" />
+<EntityTypeShape EntityType="AdventureWorksModel.ProductPhoto" PointX="3" PointY="3.375" Width="1.5" Height="2.085348307291667" IsExpanded="true" />
+<EntityTypeShape EntityType="AdventureWorksModel.ProductProductPhoto" PointX="3" PointY="1" Width="1.5" Height="1.9210009765625" IsExpanded="true" />
+<AssociationConnector Association="AdventureWorksModel.FK_ProductProductPhoto_Product_ProductID" ManuallyRouted="false">
+<ConnectorPoint PointX="2.625" PointY="1.96050048828125" />
+<ConnectorPoint PointX="3" PointY="1.96050048828125" />
+</AssociationConnector>
+<AssociationConnector Association="AdventureWorksModel.FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" ManuallyRouted="false">
+<ConnectorPoint PointX="3.75" PointY="3.375" />
+<ConnectorPoint PointX="3.75" PointY="2.9210009765625" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

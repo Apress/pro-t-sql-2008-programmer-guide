@@ -1,0 +1,8 @@
+USE AdventureWorks;
+GO
+
+CREATE SYMMETRIC KEY TestSymmetricKey
+	WITH ALGORITHM = AES_128
+	ENCRYPTION BY PASSWORD = 'p@55w0rd';
+GO
+

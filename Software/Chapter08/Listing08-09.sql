@@ -1,0 +1,7 @@
+USE AdventureWorks;
+GO
+
+CREATE ASYMMETRIC KEY TempAsymmetricKey
+WITH ALGORITHM = RSA_1024;
+GO
+

@@ -1,0 +1,22 @@
+<EVENT_INSTANCE>
+  <EventType>CREATE_TABLE</EventType>
+  <PostTime>2008-03-22T21:08:28.527</PostTime>
+  <SPID>115</SPID>
+  <ServerName>SQL2008</ServerName>
+  <LoginName>SQL2008\Michael</LoginName>
+  <UserName>dbo</UserName>
+  <DatabaseName>AdventureWorks2008</DatabaseName>
+  <SchemaName>dbo</SchemaName>
+  <ObjectName>MyTable</ObjectName>
+  <ObjectType>TABLE</ObjectType>
+  <TSQLCommand>
+  <SetOptions ANSI_NULLS="ON"
+    ANSI_NULL_DEFAULT="ON"
+    ANSI_PADDING="ON"
+    QUOTED_IDENTIFIER="ON"
+    ENCRYPTED="FALSE" />
+  <CommandText>
+    CREATE TABLE dbo.MyTable (i int);
+  </CommandText>
+  </TSQLCommand>
+</EVENT_INSTANCE>

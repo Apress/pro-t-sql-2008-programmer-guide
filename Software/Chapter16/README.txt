@@ -1,0 +1,1 @@
+The code samples in this chapter are ASP.NET code and require IIS and can be edited/run as ASP.NET websites under IIS. Note that some of the code samples contain URIs that will have to be modified to match your local installation.

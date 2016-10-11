@@ -1,0 +1,8 @@
+USE AdventureWorks;
+GO
+
+DBCC TRACEON (1204, -1);
+GO
+
+DBCC TRACEOFF (1204, -1);
+GO

@@ -1,0 +1,8 @@
+USE AdventureWorks;
+GO
+
+CREATE FULLTEXT STOPLIST AWStoplist
+FROM SYSTEM STOPLIST;
+GO 
+
+
